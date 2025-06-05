@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doğa Su Eren | Portofoliu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <img src="profil.jpg" alt="Doğa Su Eren" class="profile-photo">
+    <h2>Doğa Su Eren</h2>
+    <ul class="menu">
+      <li class="active" data-target="about"><span></span>ABOUT</li>
+      <li data-target="projects"><span></span>PROJECTS</li>
+      <li data-target="content"><span></span>CONTENT</li>
+    </ul>
+  </div>
+  <div class="main-content">
+    <div class="content-box" id="about">
+      <h1></h1>
+      <p>Hello! I'm Doğa Su Eren, a web developer based in Chișinău, Moldova. Although I have previously worked in different fields, I recently graduated in Informatics from ULIM and I am highly motivated to now work in areas related to my degree.</p>
+      <p>I specialize in HTML5, CSS3, JavaScript, PHP, and MySQL. I’m passionate about web development and eager to learn new tools and technologies to continuously improve myself.</p>
+      <p>While I currently face a language barrier in foreign languages, I am fully committed to overcoming it and confident that I will solve this issue in a short time through persistent effort and practice.</p>
+      <p>I'm actively seeking opportunities as a Frontend or PHP Developer where I can start applying my knowledge, grow in a professional environment, and contribute meaningfully to real projects. </p>
+    </div>
+    <div class="content-box" id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Google-Clone</h3>
+          <p>A simple clone of the Google homepage built using HTML and CSS.</p>
+          <a href="https://github.com/dogasu/Google-Clone.git" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+          <h3>Google1998</h3>
+          <p>A simple clone of the Google1998 homepage built using HTML and CSS.</p>
+          <a href="https://github.com/dogasu/Google-1998.git" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+          <h3>Music Store</h3>
+          <p>Simple store project.</p>
+          <a href="https://github.com/dogasu/bootsrap-music-store.git" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+          <h3>Recipe App</h3>
+          <p>Simple recipe app project.</p>
+          <a href="https://github.com/dogasu/recipeapp.git" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-box" id="content">
+      <h2>Content</h2>
+      <p>Mail: dogasueren5@gmail.com</p>
+      <p>LinkedIn: linkedin.com/in/doğasueren</p>
+      <p>GitHub: github.com/dogasu</p>
+      <p>Phone: +373 789 04 915</p>
+      <p>Address: Chișinău, Moldova</p>
+      <p>Feel free to reach out for any inquiries or collaborations!</p>
+      
+    </div>
+  </div>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sections = ['about', 'projects', 'content'];
+  const menuItems = document.querySelectorAll('.menu li');
+  const sectionEls = sections.map(id => document.getElementById(id));
+  const mainContent = document.querySelector('.main-content');
+
+  // Scroll ile aktif menü
+  mainContent.addEventListener('scroll', function() {
+    let scrollPos = mainContent.scrollTop;
+    let activeIndex = 0;
+    for (let i = 0; i < sectionEls.length; i++) {
+      if (sectionEls[i]) {
+        // .content-box'ların üstten margin/padding'i varsa daha hassas olur
+        const offsetTop = sectionEls[i].offsetTop;
+        if (scrollPos + 60 >= offsetTop) {
+          activeIndex = i;
+        }
+      }
+    }
+    menuItems.forEach((li, idx) => {
+      li.classList.toggle('active', idx === activeIndex);
+    });
+  });
+
+  // Menüye tıklayınca kaydır
+  menuItems.forEach((item, idx) => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = sectionEls[idx];
+      if (target) {
+        mainContent.scrollTo({
+          top: target.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
